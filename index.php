@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Bataille Navale</title>
+        <title>Bataille_Navale</title>
     </head>
     <body>
     <section>
