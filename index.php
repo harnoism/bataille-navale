@@ -58,6 +58,7 @@ if ($etat["j1"] != null && $etat["j2"] != null ) {
   <head>
       <meta charset="UTF-8">
       <title>Joueur 1 / Joueur 2</title>
+      <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <h1>Connexion aux rôles</h1>
