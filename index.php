@@ -46,7 +46,6 @@ $role = $_SESSION["role"] ?? "Aucun rôle";
 header('refresh:5');
 
 if ($etat["j1"] != null && $etat["j2"] != null ) {
-  echo 'lancer la partie';
   include('Plato.php');}
 // else {
 //   include('index.php');

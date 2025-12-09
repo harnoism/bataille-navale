@@ -61,16 +61,10 @@
   <body>
     <h1>Phase de choix </h1>
     <h2>Votre choix : <strong><?= $etat ?></strong></h2>
+    <?php for ( $i = 0; $i < count($grid); $i++ ) :?>
+            <tr> 
+    <?php for ($j=0; $i < count($grid); $j++ ): ?> 
+            <td data-row="ligne" data-col="colonne" class="case"></td>
 
-    <td class="case" data-row="1" data-col="A"></td>
-    <td class="case" data-row="2" data-col="B"></td>
-    <td class="case" data-row="3" data-col="C"></td>
-    <td class="case" data-row="4" data-col="D"></td>
-    <td class="case" data-row="5" data-col="E"></td>
-    <td class="case" data-row="6" data-col="F"></td>
-    <td class="case" data-row="7" data-col="G"></td>
-    <td class="case" data-row="8" data-col="H"></td>
-    <td class="case" data-row="9" data-col="I"></td>
-    <td class="case" data-row="10" data-col="J"></td>
   </body>
 </html>
