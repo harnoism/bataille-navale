@@ -1,9 +1,8 @@
 <?php
 
-if (isset($_POST["A1"])) {
-    echo "A1"; 
+if (isset($_POST["case"])) {
+    echo $_POST["case"];
+
+    header('Location: ./index.php');
     exit;
 }
-
-$coords = $_POST['case']; // "3-7"
-list($row, $col) = explode('-', $coords);

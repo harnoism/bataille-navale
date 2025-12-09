@@ -46,7 +46,8 @@ $role = $_SESSION["role"] ?? "Aucun rôle";
 header('refresh:5');
 
 if ($etat["j1"] != null && $etat["j2"] != null ) {
-  include('Plato.php');}
+  include('Plato.php');
+}
 // else {
 //   include('index.php');
 // }
@@ -58,6 +59,7 @@ if ($etat["j1"] != null && $etat["j2"] != null ) {
   <head>
       <meta charset="UTF-8">
       <title>Joueur 1 / Joueur 2</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
       <link rel="stylesheet" href="style.css">
   </head>
   <body>

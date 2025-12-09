@@ -1,25 +1,4 @@
 <?php
-    function initialisation():array{
-        $nomsBateaux = [
-            1 => 'Torpilleur',
-            2 => 'Sous-marin',
-            3 => 'Croiseur',
-            4 => 'Porte-avions'
-        ];
-        return  [
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        ];
-
-    }
     function init_bdd(PDO $pdo, array $gridJ1, array $gridJ2)
     {
         // Requête préparée une seule fois  /ajoute une nouvelle case de bateau dans la table positions.
@@ -45,7 +24,19 @@
             }
         }
     }
-    $grid = initialisation();
+
+    $grid = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ];
     $etat = $_SESSION["prêt"] ?? "Pas prêt";
 
 ?>
@@ -61,14 +52,13 @@
     <h2>Votre choix : <strong><?= $etat ?></strong></h2>
     <?php for ( $i = 0; $i < count($grid); $i++ ) :?>
         <div class="row"> 
-    <?php for ($j=0; $j < count($grid[$i]); $j++ ): ?> 
-        <div class="col border">
-            <form method="post" action="click_case.php">
-                <button name="case" value="<?= $i ?>-<?= $j ?>"></button>
-            </form>
-        </div>
-    <?php endfor; ?>
-
+            <?php for ($j = 0; $j < count($grid[$i]); $j++ ): ?> 
+                <div class="col border">
+                    <form method="post" action="./click_case.php">
+                        <button name="case" value="<?= $i ?>-<?= $j ?>"></button>
+                    </form>
+                </div>
+            <?php endfor; ?>
         </div>
     <?php endfor; ?>
 
