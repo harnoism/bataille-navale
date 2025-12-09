@@ -6,7 +6,7 @@
             3 => 'Croiseur',
             4 => 'Porte-avions'
         ];
-        $grid = [
+        return  [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -18,7 +18,6 @@
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         ];
-        return $grid;
 
     }
     function init_bdd(PDO $pdo, array $gridJ1, array $gridJ2)
@@ -46,7 +45,7 @@
             }
         }
     }
-
+    $grid = initialisation();
     $etat = $_SESSION["prêt"] ?? "Pas prêt";
 
 ?>
@@ -56,126 +55,24 @@
   <head>
       <meta charset="UTF-8">
       <title>Choix</title>
-      <link href ="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"/>
   </head>
   <body>
     <h1>Phase de choix </h1>
     <h2>Votre choix : <strong><?= $etat ?></strong></h2>
-    <div class="container text-center">
-      <div class="row">
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-      </div>
-       <div class="row">
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-      </div>
-       <div class="row">
-        <div class="col border border-primary">
-          <form method="post" action="../scripts/click_case.php">
-            <button type="submit" name="a1"></button>
-          </form>
+    <?php for ( $i = 0; $i < count($grid); $i++ ) :?>
+        <div class="row"> 
+    <?php for ($j=0; $j < count($grid[$i]); $j++ ): ?> 
+        <div class="col border">
+            <form method="post" action="click_case.php">
+                <button name="case" value="<?= $i ?>-<?= $j ?>"></button>
+            </form>
         </div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-      </div>
-       <div class="row">
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-      </div>
-       <div class="row">
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-      </div>
-       <div class="row">
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-      </div>
-       <div class="row">
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-      </div>
-       <div class="row">
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-      </div>
-       <div class="row">
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
-      </div>
-    </div>
-        <form method="post" action="index.php">
+    <?php endfor; ?>
+
+        </div>
+    <?php endfor; ?>
+
+    <form method="post" action="index.php">
         <button type="submit" name="reset_total">
             ❌ Fin de partie (RESET)
         </button>
