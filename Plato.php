@@ -1,7 +1,7 @@
 <?php
     function init_bdd(PDO $pdo, array $gridJ1, array $gridJ2)
     {
-        // Requête préparée une seule fois  /ajoute une nouvelle case de bateau dans la table positions.
+        // Requête préparée une seule fois  / ajoute une nouvelle case de bateau dans la table positions.
         $stmt = $pdo->prepare("
             INSERT INTO positions (id, joueur, ligne, colonne, bateau, touche)
             VALUES (NULL, ?, ?, ?, ?, 0) 
@@ -24,7 +24,22 @@
             }
         }
     }
+    //--- Prends la grid de l'adversaire ---
+    if (isset($_POST["joueur1"])) {
+        if ($etat["j1"] ===null ) {
+            $etat["j1"] = session_id();
+            $player = $_SESSION["role"] === 'joueur1' ?  'joueur2' : 'joueur1';
+            $query = 'SELECT * FROM '.$player; // demande a la table sql de regarder la grille du j2
+        }
+    }
 
+    if (isset($_POST["joueur2"])) {
+        if ($etat["j2"] ===null ) {
+            $etat["j2"] = session_id();
+            $player = $_SESSION["role"] === 'joueur2' ?  'joueur1' : 'joueur2';
+            $query = 'SELECT * FROM '.$player; 
+        }
+    }
     $grid = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -52,12 +67,19 @@
     <h2>Votre choix : <strong><?= $etat ?></strong></h2>
     <?php for ( $i = 0; $i < count($grid); $i++ ) :?>
         <div class="row"> 
-            <?php for ($j = 0; $j < count($grid[$i]); $j++ ): ?> 
                 <div class="col border">
                     <form method="post" action="./click_case.php">
                         <button name="case" value="<?= $i ?>-<?= $j ?>"></button>
                     </form>
                 </div>
+                <?php for ($j = 0; $j < count($grid[$i]); $j++ ): 
+                    if (isset($rows[$i + $j])) {
+                        $case = $rows[$i + $j];
+                        $color = $case['checked'] == 1 ? 'blue' : 'grey';
+                            if ($case['checked'] == 1 && $case['boat'] > 0) {
+                                $color = 'red';
+                            } 
+                    }?>
             <?php endfor; ?>
         </div>
     <?php endfor; ?>
