@@ -40,6 +40,14 @@
             $query = 'SELECT * FROM '.$player; 
         }
     }
+
+    if ($etat["j1"] !== null && $etat["j2"] !== null && !$etat["bddInitialisee"]) {
+    init_bdd($pdo, $gridJ1, $gridJ2);
+    
+    $etat["bddInitialisee"] = true;
+    file_put_contents($fichier, json_encode($etat));
+}
+
     $grid = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
