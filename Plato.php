@@ -25,35 +25,116 @@
   <head>
       <meta charset="UTF-8">
       <title>Game</title>
+      <style>
+        body {
+          background-color: #a94064;
+          color: white;
+          font-family: Arial, sans-serif;
+          padding: 20px;
+          text-align: center;
+          margin: 0;
+        }
+
+        h1 {
+          margin-bottom: 30px;
+          font-size: 32px;
+        }
+
+        .grid-container {
+          display: grid;
+          grid-template-columns: repeat(10, 60px);
+          grid-template-rows: repeat(10, 60px);
+          gap: 5px;
+          background-color: #a94064;
+          padding: 0;
+          margin: 30px auto;
+          width: fit-content;
+        }
+
+        .cell-form {
+          margin: 0;
+          padding: 0;
+          display: block;
+        }
+
+        .cell {
+          width: 60px;
+          height: 60px;
+          margin: 3px;
+          padding: 0;
+          border: none;
+          outline: none;
+          border-radius: 12px;
+          cursor: pointer;
+          transition: all 0.2s;
+          box-sizing: border-box;
+        }
+
+        .cell.grey {
+          background-color: white;
+        }
+
+        .cell.blue {
+          background-color: #4a90e2;
+        }
+
+        .cell.red {
+          background-color: #e74c3c;
+        }
+
+        .cell:hover {
+          transform: scale(0.95);
+          opacity: 0.9;
+        }
+
+        .cell:focus {
+          outline: none;
+        }
+
+        .reset-form {
+          margin-top: 30px;
+        }
+
+        .reset-button {
+          padding: 12px 24px;
+          font-size: 16px;
+          cursor: pointer;
+          border: none;
+          border-radius: 8px;
+          background-color: white;
+          color: #a94064;
+          font-weight: bold;
+          transition: all 0.2s;
+        }
+
+        .reset-button:hover {
+          background-color: #f0f0f0;
+          transform: translateY(-2px);
+        }
+      </style>
   </head>
   <body>
-    <h1>La partie commence: </h1>
-    <?php
-      for ($i = 0; $i < count($rows); $i += $colsPerRow) {
-        echo '<div class="row">';
-        for ($j = 0; $j < $colsPerRow; $j++) {
-            if (isset($rows[$i + $j])) {
-                $case = $rows[$i + $j];
-                $color = $case['checked'] == 1 ? 'blue' : 'grey';
-                if ($case['checked'] == 1 && $case['boat'] > 0) {
-                  $color = 'red';
-                }            
-
-                $idgrid = $case['idgrid'];
-
-                echo '<div class="col border">';
-                echo '<form method="post" action="./click_case.php">';
-                echo '<button name="case" value="'.$idgrid.'"></button>';
-                echo '</form>';
-                echo '</div>';
-            }
+    <h1>La partie commence:</h1>
+    
+    <div class="grid-container">
+      <?php
+        foreach ($rows as $case) {
+          $color = $case['checked'] == 1 ? 'blue' : 'grey';
+          if ($case['checked'] == 1 && $case['boat'] > 0) {
+            $color = 'red';
+          }
+          
+          $idgrid = $case['idgrid'];
+          
+          echo '<form method="post" action="./click_case.php" class="cell-form">';
+          echo '<button class="cell '.$color.'" name="case" value="'.$idgrid.'"></button>';
+          echo '</form>';
         }
-        echo '</div>';
-      }
-    ?>
+      ?>
+    </div>
 
-    <form method="post" action="index.php">
-      <button type="submit" name="reset_total">
+    <form method="post" action="index.php" class="reset-form">
+      <button type="submit" name="reset_total" class="reset-button">
         ❌ Fin de partie (RESET)
       </button>
     </form>
