@@ -2,6 +2,14 @@
   include('./sql-connect.php');
 
   $sql = new SqlConnect();
+
+  $role = $_SESSION["role"];
+  if ($role === "joueur1") {
+        $table = "joueur2";  // J1 regarde la grille du J2
+  } else {
+        $table = "joueur1";  // J2 regarde la grille du J1
+    }
+
   $player = $_SESSION["role"] === 'joueur1' ?  'joueur2' : 'joueur1';
   $query = 'SELECT * FROM '.$player;
 
@@ -16,10 +24,10 @@
 <html>
   <head>
       <meta charset="UTF-8">
-      <title>Choix</title>
+      <title>Game</title>
   </head>
   <body>
-    <h1>Phase de choix </h1>
+    <h1>La partie commence: </h1>
     <?php
       for ($i = 0; $i < count($rows); $i += $colsPerRow) {
         echo '<div class="row">';

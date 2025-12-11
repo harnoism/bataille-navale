@@ -36,12 +36,6 @@ if (isset($_POST["joueur2"])) {
 if (isset($_POST["tirer"])) {
     $coordX = $_POST["x"] ?? null;
     $coordY = $_POST["y"] ?? null;
-    $color = $case['checked'] == 1 ? 'blue' : 'grey';
-    if ($case['checked'] == 1 && $case['boat'] > 0) {
-        $color = 'red';
-    }   
-        
-        $id_grid = $case['id_grid'];
     
     $etat["dernierCoup"] = [
         "joueur" => $_SESSION["role"],
