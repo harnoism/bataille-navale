@@ -86,4 +86,7 @@ h1 {
     color: green;
     margin-top: 20px;
     flex-direction: row;
+    margin-left: 50px;
+    width: 500px;
+    text-align: center;
 }
