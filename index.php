@@ -13,17 +13,6 @@ function save_state($file, $data) {
   file_put_contents($file, json_encode($data));
 }
 
-if (isset($_POST["reset_total"])) {
-  $etat = ["j1" => null, "j2" => null];
-  save_state($GLOBALS['fichier'], $etat);
-
-  session_unset();
-  session_destroy();
-
-  header("Location: index.php");
-  exit;
-}
-
 if (isset($_POST["joueur1"])) {
     if ($etat["j1"] === null) {
         $etat["j1"] = session_id();

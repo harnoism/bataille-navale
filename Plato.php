@@ -11,20 +11,26 @@
   $req = $sql->db->prepare($query);
   $req->execute();
   $rows = $req->fetchAll(PDO::FETCH_ASSOC);
-  
+
+  $etat = json_decode(file_get_contents($GLOBALS['fichier']), true);
 
   if (isset($_POST["reset_total"])) {
-  $sql->db->exec("UPDATE $table SET checked = 0, boat = 0");
-  save_state($GLOBALS['fichier'], $db);
+    $etat = ["j1" => null, "j2" => null];
+    file_put_contents($GLOBALS['fichier'], json_encode($etat));
+    $sql->db->exec("UPDATE joueur1 SET checked = 0");
+    $req->execute();
+    $sql->db->exec("UPDATE joueur2 SET checked = 0");
+    $req->execute();
 
-  session_unset();
-  session_destroy();
+    session_unset();
+    session_destroy();
 
-  header("Location: index.php");
-  exit;
-}
-  
-  $colsPerRow = 10;
+    header("Location: index.php");
+    exit;
+  }
+
+
+  $colsPerRow = 12;
 
 ?>
 
@@ -52,10 +58,11 @@
           echo '<button class="cell '.$color.'" name="case" value="'.$idgrid.'"></button>';
           echo '</form>';
         }
+        
       ?>
     </div>
 
-    <form method="post" action="index.php" class="reset-form">
+    <form method="post" class="reset-form">
       <button type="submit" name="reset_total" class="reset-button">
         ❌ Fin de partie (RESET)
       </button>
