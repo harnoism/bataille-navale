@@ -29,7 +29,6 @@
     exit;
   }
 
-
   $colsPerRow = 12;
 
 ?>
@@ -58,7 +57,32 @@
           echo '<button class="cell '.$color.'" name="case" value="'.$idgrid.'"></button>';
           echo '</form>';
         }
-        
+
+      $hits = 0;
+      $totalBoats = 0;
+
+      foreach ($rows as $case) {
+          if ($case['boat'] > 0) {
+              $totalBoats++;
+              if ($case['checked'] == 1) {
+                  $hits++;
+              }
+          }
+      }
+      if($_SESSION["role"] === 'joueur1'){
+        if ($totalBoats > 0 && $hits === $totalBoats) {
+            echo "<div class='win-message'>🎉 Vous avez gagné ! Tous les bateaux sont coulés.</div>";
+        }else{
+            $_SESSION["role"] === 'joueur2';
+        } 
+      }
+      if($_SESSION["role"] === 'joueur2'){
+        if ($totalBoats > 0 && $hits === $totalBoats) {
+            echo "<div class='win-message'>🎉 Vous avez gagné ! Tous les bateaux sont coulés.</div>";
+        }else{
+            $_SESSION["role"] === 'joueur1';
+        } 
+      }
       ?>
     </div>
 

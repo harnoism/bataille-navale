@@ -79,3 +79,11 @@ h1 {
     background-color: #f0f0f0;
     transform: translateY(-2px);
 }
+
+.win-message {
+    font-size: 28px;
+    font-weight: bold;
+    color: green;
+    margin-top: 20px;
+    flex-direction: row;
+}

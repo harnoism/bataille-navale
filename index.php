@@ -32,7 +32,7 @@ if (isset($_POST["joueur2"])) {
 // Détection automatique du rôle (si déjà assigné avant refresh)
 $role = $_SESSION["role"] ?? "Aucun rôle";
 
-header('refresh:5');
+header('refresh:3');
 
 if ($etat["j1"] != null && $etat["j2"] != null ) {
   include('Plato.php');
