@@ -27,7 +27,7 @@ if (isset($_POST["reset_total"])) {
 if (isset($_POST["joueur1"])) {
     if ($etat["j1"] === null) {
         $etat["j1"] = session_id();
-        $_SESSION["role"] = "Joueur 1";
+        $_SESSION["role"] = "joueur1";
         save_state($fichier, $etat);
     }
 }
@@ -35,7 +35,7 @@ if (isset($_POST["joueur1"])) {
 if (isset($_POST["joueur2"])) {
     if ($etat["j2"] === null) {
         $etat["j2"] = session_id();
-        $_SESSION["role"] = "Joueur 2";
+        $_SESSION["role"] = "joueur2";
         save_state($fichier, $etat);
     }
 }
