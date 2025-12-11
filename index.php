@@ -79,9 +79,6 @@ if ($etat["j1"] != null && $etat["j2"] != null ) {
           <?= $etat["j2"] !== null ? "disabled" : "" ?>>
           🎮 Devenir Joueur 2
       </button>
-      <button type="submit" name="reset_total">
-          ❌ Fin de partie (RESET)
-      </button>
     </form>
   </body>
 </html>

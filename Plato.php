@@ -12,7 +12,20 @@
   $req->execute();
   $rows = $req->fetchAll(PDO::FETCH_ASSOC);
   
+
+  if (isset($_POST["reset_total"])) {
+  $sql->db->exec("UPDATE $table SET checked = 0, boat = 0");
+  save_state($GLOBALS['fichier'], $db);
+
+  session_unset();
+  session_destroy();
+
+  header("Location: index.php");
+  exit;
+}
+  
   $colsPerRow = 10;
+
 ?>
 
 <!DOCTYPE html>
