@@ -39,6 +39,11 @@
   </head>
   <body>
     <h1>La partie commence:</h1>
+<?php
+  if (!empty($_SESSION["battle_message"])) {
+    echo '<div class="info-message">'.$_SESSION["battle_message"].'</div>';
+  }
+?>
     <div class="main-container">
       <div class="col-labels">
         <div>1</div>
