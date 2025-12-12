@@ -84,6 +84,10 @@
 </div>
 
 <?php
+  // if (!empty($_SESSION["message"])) {
+  //   echo "<div class='message'>".$_SESSION["message"]."</div>";
+  //   unset($_SESSION["message"]); // pour que le message disparaisse après refresh
+  // }
 
   $hits = 0;
   $totalBoats = 0;
@@ -96,6 +100,7 @@
           }
       }
   }
+  
   if($_SESSION["role"] === 'joueur1'){
     if ($totalBoats > 0 && $hits === $totalBoats) {
         echo "<div class='win-message'>🎉 Vous avez gagné ! Tous les bateaux sont coulés. 🎉</div>";
