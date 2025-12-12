@@ -1,16 +1,16 @@
 <?php
   include('./sql-connect.php');
 
-  $sql = new SqlConnect();
+  $sql = new SqlConnect();    //Instancie l’objet SQL -> $sql->db permettra d’exécuter des requêtes.
 
   $role = $_SESSION["role"];
 
-  $player = $_SESSION["role"] === 'joueur1' ?  'joueur2' : 'joueur1';
+  $player = $_SESSION["role"] === 'joueur1' ?  'joueur2' : 'joueur1'; //la grille de l’autre joueur
   $query = 'SELECT * FROM '.$player;
 
   $req = $sql->db->prepare($query);
   $req->execute();
-  $rows = $req->fetchAll(PDO::FETCH_ASSOC);
+  $rows = $req->fetchAll(PDO::FETCH_ASSOC); //On récupère toutes les cases sous forme de tableaux associatifs 
 
   $etat = json_decode(file_get_contents($GLOBALS['fichier']), true);
 
@@ -28,9 +28,6 @@
     header("Location: index.php");
     exit;
   }
-
-  $colsPerRow = 10;
-
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +68,7 @@
   </div>
   <div class="grid-container">
     <?php
-      foreach ($rows as $case) {
+      foreach ($rows as $case) {        //Parcourir chaque case du joueur adverse.
         $color = $case['checked'] == 1 ? 'blue' : 'grey';
         if ($case['checked'] == 1 && $case['boat'] > 0) {
           $color = 'red';
@@ -79,7 +76,7 @@
         $idgrid = $case['idgrid'];
 
         echo '<form method="post" action="./click_case.php" class="cell-form">';
-        echo '<button class="cell '.$color.'" name="case" value="'.$idgrid.'"></button>';
+        echo '<button class="cell '.$color.'" name="case" value="'.$idgrid.'"></button>'; //envoie case = idgrid à click_case.php.
         echo '</form>';
       }
     ?>
@@ -91,7 +88,7 @@
   $hits = 0;
   $totalBoats = 0;
 
-  foreach ($rows as $case) {
+  foreach ($rows as $case) { //On compte les bateaux non touchés / touchés.
       if ($case['boat'] > 0) {
           $totalBoats++;
           if ($case['checked'] == 1) {
@@ -118,7 +115,7 @@
     </div>
   </div>
   <form method="post" class="reset-form">
-    <button type="submit" name="reset_total" class="reset-button">
+    <button type="submit"  name="reset_total" class="reset-button"> <!--submit = envoie les données au serveur-->
       ❌ Fin de partie (RESET)
     </button>
   </form>

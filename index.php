@@ -8,9 +8,10 @@ if (!file_exists($fichier)) {
 }
 
 $etat = json_decode(file_get_contents($fichier), true);
+//Convertit le JSON en tableau associatif PHP.//L’argument true signifie : renvoyer un tableau, pas un objet.
 
 function save_state($file, $data) {
-  file_put_contents($file, json_encode($data));
+  file_put_contents($file, json_encode($data));//Convertit $data en JSON.
 }
 
 if (isset($_POST["joueur1"])) {
@@ -30,7 +31,7 @@ if (isset($_POST["joueur2"])) {
 }
 
 // Détection automatique du rôle (si déjà assigné avant refresh)
-$role = $_SESSION["role"] ?? "Aucun rôle";
+$role = $_SESSION["role"] ?? "Aucun rôle";//?? -> opérateur de coalescence nulle.
 
 header('refresh:3');
 
