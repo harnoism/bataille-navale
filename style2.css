@@ -56,6 +56,96 @@ h1 {
     font-weight: bold;
     color: white;
 }
+#t1{
+    border:3px solid white;
+    padding:10px;
+}
+#t2{
+    border:3px solid white;
+    padding:10px;
+}
+
+#t3{
+    border:3px solid white;
+    padding:10px;
+}
+
+#t4{
+    border:3px solid white;
+    padding:10px;
+}
+
+#t5{
+    border:3px solid white;
+    padding:10px;
+}
+
+#t6{
+    border:3px solid white;
+    padding:10px;
+}
+
+#t7{
+    border:3px solid white;
+    padding:10px;
+}
+
+#t8{
+    border:3px solid white;
+    padding:10px;
+}
+
+#t9{
+    border:3px solid white;
+    padding:10px;
+}
+
+#t10{
+    border:3px solid white;
+    padding:10px;
+}
+
+#a1{
+    border:3px solid white;
+    padding:21px;
+}
+#a2{
+    border:3px solid white;
+    padding:21px;
+}
+#a3{
+    border:3px solid white;
+    padding:21px;
+}
+#a4{
+    border:3px solid white;
+    padding:21px;
+}
+#a5{
+    border:3px solid white;
+    padding:21px;
+}
+#a6{
+    border:3px solid white;
+    padding:21px;
+}
+#a7{
+    border:3px solid white;
+    padding:21px;
+}
+#a8{
+    border:3px solid white;
+    padding:21px;
+}
+#a9{
+    border:3px solid white;
+    padding:21px;
+}
+#a10{
+    border:3px solid white;
+    padding:21px;
+}
+
 
 .row-labels div {
     display: flex;
@@ -138,13 +228,24 @@ h1 {
 
 /* ✅ Message de victoire centré */
 .win-message {
-    background-color: white;
-    border-radius: 50px;
-    font-size: 50px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px; 
+    font-size: 25px;
     font-weight: bold;
-    color: #f10055;
+    color: #30c762;
     margin-top: 20px;
+    margin-left:30px;
     text-align: center;
-    width: 800px;
+    width: 600px;
     box-shadow: 10px;
+    padding:10px;
+    /* text-align: center;
+    justify-content: center;
+    align-items: center; */
+}
+
+.info-message{
+    font-size: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px; 
 }

@@ -46,30 +46,30 @@
 ?>
     <div class="main-container">
       <div class="col-labels">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
-        <div>7</div>
-        <div>8</div>
-        <div>9</div>
-        <div>10</div>
+        <div id="t1">1</div>
+        <div id="t2">2</div>
+        <div id="t3">3</div>
+        <div id="t4">4</div>
+        <div id="t5">5</div>
+        <div id="t6">6</div>
+        <div id="t7">7</div>
+        <div id="t8">8</div>
+        <div id="t9">9</div>
+        <div id="t10">10</div>
       </div>
         
 <div class="row-and-grid">
   <div class="row-labels">
-      <div>A</div>
-      <div>B</div>
-      <div>C</div>
-      <div>D</div>
-      <div>E</div>
-      <div>F</div>
-      <div>G</div>
-      <div>H</div>
-      <div>I</div>
-      <div>J</div>
+      <div id="a1">A</div>
+      <div id="a2">B</div>
+      <div id="a3">C</div>
+      <div id="a4">D</div>
+      <div id="a5">E</div>
+      <div id="a6">F</div>
+      <div id="a7">G</div>
+      <div id="a8">H</div>
+      <div id="a9">I</div>
+      <div id="a10">J</div>
   </div>
   <div class="grid-container">
     <?php
