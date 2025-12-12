@@ -13,8 +13,8 @@ if (isset($_POST["case"])) {
     WHERE idgrid = :cell;
   ';
 
-  $req = $sql->db->prepare($query);
-  $req->execute(['cell' => $_POST["case"]]);
+  $req = $sql->db->prepare($query);           //On prépare la requête.
+  $req->execute(['cell' => $_POST["case"]]);          //Exécute en donnant la valeur de la case.
 
   header("Location: ../index.php");
 

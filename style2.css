@@ -1,5 +1,5 @@
 body {
-    background-color: #a94064;
+    background-color: #f10055;
     color: white;
     font-family: Arial, sans-serif;
     padding: 20px;
@@ -97,11 +97,11 @@ h1 {
 }
 
 .cell.blue {
-    background-color: #4a90e2;
+    background-color: blue;
 }
 
 .cell.red {
-    background-color: #e74c3c;
+    background-color: red;
 }
 
 .cell:hover {
@@ -126,7 +126,7 @@ h1 {
     border: none;
     border-radius: 8px;
     background-color: white;
-    color: #a94064;
+    color: #f10055;
     font-weight: bold;
     transition: all 0.2s;
 }
@@ -138,11 +138,13 @@ h1 {
 
 /* ✅ Message de victoire centré */
 .win-message {
-    font-size: 28px;
+    background-color: white;
+    border-radius: 50px;
+    font-size: 50px;
     font-weight: bold;
-    color: #2ecc71;
+    color: #f10055;
     margin-top: 20px;
     text-align: center;
-    width: 100%;
-    max-width: 500px;
+    width: 800px;
+    box-shadow: 10px;
 }
